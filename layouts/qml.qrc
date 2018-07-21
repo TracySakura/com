@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Compiler.qml</file>
+        <file>Viewer.qml</file>
+        <file>InputName.qml</file>
+        <file>InputNode.qml</file>
+        <file>InfoTitle.qml</file>
+        <file>InfoAttrListView.qml</file>
+        <file>InfoInputListView.qml</file>
+        <file>InfoOutputListView.qml</file>
+        <file>InfoWeightListView.qml</file>
+        <file>WeightValueListView.qml</file>
+    </qresource>
+</RCC>
