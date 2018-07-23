@@ -10,15 +10,15 @@
 #include "../cpp/cpp_sample.h"
 #include "infoitem.h"
 using namespace std;
-static const unordered_map<string, QColor> opColorMap = {//same as what in the qml
-    {"Conv",QColor("#b254fb")},
+static const unordered_map<string, QColor> opColorMap = {
+    {"Conv",QColor("#CD5C5C")},
     {"Constant",QColor("#d9bca5")},
     {"BatchNormalization",QColor("#c0a5d9")},
     {"Relu",QColor("#9395db")},
     {"Reshape",QColor("#008080")},
     {"Add",QColor("#deeda8")},
     {"AveragePool",QColor("#76cf98")},
-    {"MaxPool",QColor("#a8edc3")}
+    {"MaxPool",QColor("#DAA520")}
 };
 class GraphCreator : public QObject
 {
@@ -31,6 +31,7 @@ public:
     Q_INVOKABLE void setWeightValue(QString weightStr);
     Q_INVOKABLE void release();
     Q_INVOKABLE void weightValueRelease();
+    Q_INVOKABLE QColor getOpColor(QString opStr);
     static QPointer<QQuickItem> weightValues;
 private:
     static constexpr qreal xMid=640.;

@@ -57,33 +57,6 @@ ApplicationWindow {
         } // Qan.Graph: graph
     }
 
-//    ListModel {
-//         id: attrModel
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//         ListElement {
-//             name: "Apple"
-//             cost: 2.45
-//         }
-//    }
     Component {
         id:attrDel
         Row{
@@ -93,7 +66,7 @@ ApplicationWindow {
             }
         }
     }
-
+    //node info in detail
     Item {
         id: infoList
         objectName: "properties"
@@ -127,7 +100,7 @@ ApplicationWindow {
             Text {
                 objectName: "nodeName"
                 text: qsTr("text")
-                padding: textPadding
+                //padding: textPadding
             }
         }
     }
@@ -141,6 +114,7 @@ ApplicationWindow {
             }
         }
     }
+    //weight value
     Item {
         id : weightValues
         objectName: "weightValues"
@@ -199,30 +173,86 @@ ApplicationWindow {
             id:colorsLayout
             anchors.fill: parent
             anchors.margins: margin
-            Row {
+            RowLayout {
                 Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("Conv")
+                }
                 Label{
                     text: "Conv"
-                }
-                Rectangle{
-                    width: 40
-                    height: 10
-                    color: "red"
                 }
             }
-            Row {
+            RowLayout {
                 Layout.fillWidth: true
-                Label{
-                    text: "Conv"
-                }
                 Rectangle{
-                    width: 40
+                    width: 10
                     height: 10
-                    color: "red"
+                    color: creator.getOpColor("BatchNormalization")
+                }
+                Label{
+                    text: "BatchNormalization"
+                }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("Relu")
+                }
+                Label{
+                    text: "Relu"
+                }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("Reshape")
+                }
+                Label{
+                    text: "Reshape"
+                }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("Add")
+                }
+                Label{
+                    text: "Add"
+                }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("AveragePool")
+                }
+                Label{
+                    text: "AveragePool"
+                }
+            }
+            RowLayout {
+                Layout.fillWidth: true
+                Rectangle{
+                    width: 10
+                    height: 10
+                    color: creator.getOpColor("MaxPool")
+                }
+                Label{
+                    text: "MaxPool"
                 }
             }
         }
     }
+
     Component.onDestruction: {
         console.log("destroy!!!");
         creator.release();

@@ -39,6 +39,7 @@ ApplicationWindow {
                     id: onnxPathStr
                     placeholderText: "Path to the onnx model"
                     Layout.fillWidth: true
+                    selectByMouse: true
                 }
                 Button {
                     id:viewBtn
@@ -60,8 +61,10 @@ ApplicationWindow {
                     selectMultiple: false
                     nameFilters: ["onnx files (*.onnx)"]
                     onAccepted: {
-                        //TODO: modify the path (without file:)
-                        onnxPathStr.text = onnxs.fileUrl;
+                        var pathStr = onnxs.fileUrl.toString();
+                        pathStr = pathStr.replace(/^(file:\/{2,3})/,"");
+                        //decodeURIComponent(path);
+                        onnxPathStr.text = pathStr;
                         console.log("You chose: " + onnxs.fileUrl);
                     }
                     onRejected: {
@@ -89,6 +92,7 @@ ApplicationWindow {
                     id:configPathStr
                     placeholderText: "Path to the configuration file"
                     Layout.fillWidth: true
+                    selectByMouse: true
                 }
                 FileDialog {
                     id:configs
@@ -123,8 +127,14 @@ ApplicationWindow {
                 Label { text: "Shared_SRAM:" }
                 Label { text: "Local_SRAM:" }
 
-                TextField {placeholderText: "0-255" }
-                TextField {placeholderText: "0-255" }
+                TextField {
+                    placeholderText: "0-255"
+                    selectByMouse: true
+                }
+                TextField {
+                    placeholderText: "0-255"
+                    selectByMouse: true
+                }
             }
         }
         Button{

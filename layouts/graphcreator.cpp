@@ -1,4 +1,5 @@
 #include "graphcreator.h"
+#include <fstream>
 QPointer<QQuickItem> GraphCreator::weightValues = nullptr;
 /*
  * add input and output into the customnode
@@ -74,6 +75,10 @@ vector<qreal> GraphCreator::createNodesInPath(QPointer<CustomGraph> graph, op_no
  *create the graph base on the onnx model
  */
 void GraphCreator::createGraph(CustomGraph* g, QString path, QQuickItem* wV){
+    fstream input_file(path.toStdString(), ios::in | ios::binary);
+    if(!input_file){
+        int ddd = 0;
+    }
     QPointer<CustomGraph> graph = qobject_cast<CustomGraph*>(g);
     string pathStr = path.toStdString();
     vector<char> pa_chars(pathStr.begin(),pathStr.end());
@@ -340,5 +345,15 @@ void GraphCreator::weightValueRelease(){
     ctxt->setContextProperty("weightValueModel",QVariant::fromValue(emptyList));
     for(auto it = infoitems.begin();it!=infoitems.end();++it){
         delete (*it);
+    }
+}
+/*
+ * get the color of the op-color map
+ */
+QColor GraphCreator::getOpColor(QString opStr){
+    if(opColorMap.find(opStr.toStdString())==opColorMap.end()){
+        return QColor("#6f9fab");
+    }else{
+        return opColorMap.at(opStr.toStdString());
     }
 }

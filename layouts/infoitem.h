@@ -60,7 +60,6 @@ public:
     static unordered_map<string, string> weightValueMap;
     InfoItem(QString v,QObject *parent = 0):QObject(parent){//for weight value
         m_values = QString::fromStdString(weightValueMap.at(v.toStdString()));
-        //m_values = QString("Applefdgjldfjgdsfhnjghdfakhgdasfjyhsdfhdsjhysdhfdsfsdhf\n1.555\nhello\nhello\nhello\nhello\nhello\nhello\nhello\nhello\nhello");
     }
     InfoItem(op_node_attr* attr, QObject *parent = 0):QObject(parent){//attribute list model
         m_name = QString::fromStdString(attr->name);
